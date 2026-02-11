@@ -100,6 +100,37 @@ Gharibian–Parekh (GP) rounding was introduced in [[GP19]]({{site.baseurl}}/bib
 An appealing aspect of GP rounding is that it unifies the earlier product-state constructions: the cut-based states described above can be recovered as special cases, while the SDP relaxation provides a principled way to go beyond cuts by exploiting richer two-qubit correlations. Thus, GP rounding is the **most general known framework for efficiently preparing high-energy product states** in QMC.
 
 
+## Lovász state
+
+A purely graph theoretic bound is obtained from the Lovasz theta number [H25]. It has many definitions, one of it the following: 
+The Lovász theta number is the minimal $$\kappa \geq 2$$, such that there exist unit vectors $$x_u$$ for every vertex $$uu$$ (in some real Euclidean space, $\R^n$ suffices), so that 
+
+$$
+\langle x_u, x_v \rangle \leq - \frac{1}{\kappa - 1}
+$$
+whenver $$u$$ and $$v$$ are distinct vertices in $$G$$ and $$uv \not \in E(G)$$.
+
+As in GP rounding, the key idea is to compress higher-dimensional vectors to vectors in $\R^3$.
+
+Sample a random Gaussian iid matrix $$Z \in \R^{3 \times n}$$, and for each 
+$$x_u \in R^n$$ compute $$y_u = \frac{Z x_u}{||Z x_u||} \in \R^3$$, 
+yielding the Bloch coefficients of $$n$$-one qubit states.
+
+To evaluate the energy of the resulting product state, compute the expected value of a single edge:
+$$\mathbb{E}\Big[ 
+    \operatorname{tr} 
+    \Big(
+    \frac{1}{4}(II - XX - YY - ZZ)(\varrho_u \otimes \varrho_v)
+    \Big)
+\Big] = 
+\frac{1}{4}\Big(1 - \mathbb{E}[y_u \cdot y_v] \Big)
+$$
+The last expression can be lower bounded by
+$$\frac{1}{4}\Big(1 - \frac{8}{3\pi}\frac{1}{\vartheta(\bar{G}) - 1}\Big)$$.
+
+The nice thing is that for a graph of bounded degree $$\Delta$$, one has $$\Delta \geq \vartheta(\bar{G})-1$$, giving non-trivial lower bound that does not require any semidefinite programming.
+
+
 ## Matching-based states
 
 Matching-based states slightly extend the space of states from product states to tensor products of $$1$$ and $$2$$-qubit states. The intuition is as follows: the QMC Hamiltonian aims to project each pair of qubits into a maximally entangled state (namely the singlet state). One may then try to prepare every edge simulateneously in a singlet state. However, this approach is blocked by *monogamy of entanglement*. I.e., one qubit can only be maximially entangled with one of its neighbors, and then it must be completely disentangled with all others. This forces us to consider slightly more complicated approaches.
