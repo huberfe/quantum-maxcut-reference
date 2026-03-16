@@ -100,15 +100,15 @@ Gharibian–Parekh (GP) rounding was introduced in [[GP19]]({{site.baseurl}}/bib
 An appealing aspect of GP rounding is that it unifies the earlier product-state constructions: the cut-based states described above can be recovered as special cases, while the SDP relaxation provides a principled way to go beyond cuts by exploiting richer two-qubit correlations. Thus, GP rounding is the **most general known framework for efficiently preparing high-energy product states** in QMC.
 
 
-### Lovasz product state
+### Lovász product state
 
-A purely graph theoretic product state energy is obtained from one of the many definitions of the Lovasz theta number.
+A purely graph theoretic product state energy is obtained from one of the many definitions of the Lovász theta number [[H25]]({{site.baseurl}}/bib#H25).
 Given a graph $$G$$, the Lovasz theta number $$\vartheta(G)$$ is the minimal $$\kappa\geq 2$$ for which there exists a unit vector $$x_v$$ (in some Euklidean space) for every vertex $$v$$ such that $$\langle x_u, x_v \rangle = -\tfrac{1}{\vartheta - 1}$$ holds whenever $$u$$ and $$v$$ are distinct vertices and $$uv \not \in E(G)$$.
 
-Now given a graph $$G$$, let $$x_v \in \R^n$$ be the unit vectors realizing the Lovasz theta number $$\vartheta(G)$$. 
+Now given a graph $$G$$, let $$x_v \in \R^n$$ be the unit vectors realizing the Lovász theta number $$\vartheta(G)$$. 
 To these vectors in $$\R^n$$ apply the GP rounding to obtain for each vertex a Bloch vector in $$\R^3$$.
 
-Using a generalization of the fact that $$\arcsin(x) \leq x$$ for all $$x \leq 0$$ to the hypergeometric function $${}_2 F_{1}$$, together with the garantuees from Briet-de Oliveira Filho-Vallentin rounding, one obtains the lower bound [[H25]]({{site.baseurl}}/bib#H25)
+Using a generalization of the fact that $$\arcsin(x) \leq x$$ for all $$x \leq 0$$ to the hypergeometric function $${}_2 F_{1}$$, together with the garantuees from Briet-de Oliveira Filho-Vallentin rounding, one obtains the lower bound,
 
 $$qmc(G) \geq \frac{m}{4} \Big(1 + \frac{8}{\pi} \frac{1}{\vartheta(\bar{G}) -1}\Big)$$
 
